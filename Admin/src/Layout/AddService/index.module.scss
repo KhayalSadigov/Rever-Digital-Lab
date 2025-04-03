@@ -1,0 +1,119 @@
+.glass {
+  width: 100vw;
+  height: 100vw;
+  position: fixed;
+  top: 0;
+  z-index: 3;
+  background-color: rgba(0, 0, 0, 0.329);
+}
+.modal {
+  position: fixed;
+  z-index: 4;
+  width: 40vw;
+  height: 90vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.26) 0px 1px 3px 0px;
+  border-radius: 10px;
+  transition: 0.2s;
+  overflow: hidden;
+  padding: 20px;
+}
+.form {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  .image {
+    display: flex;
+    gap: 15px;
+    height: 25%;
+    .delImage{
+      position: absolute;
+      background-color: none;
+      color: white;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      right: 20px;
+      background-color: red;
+      border: none;
+      cursor: pointer;
+      
+    }
+    .imageInp {
+      height: 100%;
+      width: 100%;
+      border: 1px solid rgb(185, 184, 184);
+      border-radius: 4px;
+      color: grey;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      gap: 10px;
+      overflow: hidden;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .imageText {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+      }
+
+    }
+  }
+  .input {
+    padding: 15px 10px;
+    border-radius: 4px;
+    border: none;
+    border: 1px solid rgb(185, 184, 184);
+    outline: none;
+    transition: 0.2s;
+    &::placeholder {
+      font-size: 16px;
+    }
+    &:focus {
+      border: 1px solid #3a5aa5;
+    }
+  }
+  textarea {
+    height: 100%;
+    padding: 15px;
+    border-radius: 4px;
+    border: none;
+    border: 1px solid rgb(185, 184, 184);
+    outline: none;
+    resize: none;
+    transition: 0.2s;
+    &:focus {
+      border: 1px solid #3a5aa5;
+    }
+    &::placeholder {
+      font-size: 16px;
+    }
+  }
+}
+.btns {
+  width: 100%;
+  flex-wrap: nowrap;
+  display: flex;
+  gap: 10px;
+  flex-direction: row-reverse;
+  .btn {
+    width: 10%;
+    display: flex;
+    gap: 10px;
+  }
+}

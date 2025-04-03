@@ -1,0 +1,83 @@
+.sideBar {
+  .content {
+    transition: 0.2s;
+    width: 250px;
+    height: 100vh;
+    background-color: #3a5aa5;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .toggleBtn {
+      display: flex;
+      align-items: center;
+      height: 80px;
+      text-wrap: nowrap;
+      gap: 15px;
+      color: white;
+      .toggleIcon {
+        cursor: pointer;
+        width: 60px;
+        display: flex;
+        justify-content: center;
+        align-self: center;
+        transition: 0.2s;
+        &:hover {
+          color: #acc5ff;
+        }
+      }
+      .toggleText {
+        font-size: 18px;
+      }
+    }
+    .logOut {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      text-wrap: nowrap;
+      gap: 15px;
+      color: white;
+      padding-bottom: 30px;
+      &:hover {
+        color: #acc5ff;
+      }
+      .icon {
+        width: 60px;
+        display: flex;
+        justify-content: center;
+        align-self: center;
+      }
+      .text {
+        font-size: 16px;
+      }
+    }
+    .navigation {
+      display: flex;
+      flex-direction: column;
+      .Btn {
+        transition: 0.2s;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        text-wrap: nowrap;
+        gap: 15px;
+        color: white;
+        height: 60px;
+        &:hover {
+          color: #3a5aa5;
+          background-color: #fff;
+        }
+        .icon {
+          width: 60px;
+          display: flex;
+          justify-content: center;
+          align-self: center;
+        }
+        .text {
+          font-size: 16px;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}

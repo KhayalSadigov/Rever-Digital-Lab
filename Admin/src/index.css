@@ -1,0 +1,41 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+* {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.container {
+  width: 90%;
+  height: 100%;
+  margin: 0 auto;
+}
+@media only screen and (min-width: 1650px) {
+  .container{
+    width: 70%;
+  }
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background-color: #F3F3F9;
+  &::-webkit-scrollbar {
+    width: 10px; /* Scrollbar eni */
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #ffffff; /* Ağ rəngdə track */
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #1976d2; /* Mavi rəngdə thumb */
+    border-radius: 10px; /* Yuvarlaq künclər */
+    border: 3px solid #ffffff; /* Thumb ətrafında ağ haşiyə */
+  }
+
+  /* Hover effekti */
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: #145cae; /* Hover zamanı daha tünd mavi */
+  }
+}
