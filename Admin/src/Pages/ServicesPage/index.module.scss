@@ -6,23 +6,6 @@
   gap: 15px;
   overflow-y: scroll;
   height: calc(100vh - 80px);
-  .head {
-    width: 100%;
-    height: 60px;
-    background-color: #fff;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px;
-    border-radius: 5px;
-    padding: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    h3{
-        color: rgb(61, 61, 61);
-    }
-    .addBtn {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-  }
+  
+ 
 }

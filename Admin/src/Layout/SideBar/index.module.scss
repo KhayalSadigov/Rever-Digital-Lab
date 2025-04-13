@@ -3,7 +3,7 @@
     transition: 0.2s;
     width: 250px;
     height: 100vh;
-    background-color: #3a5aa5;
+    background-color: #015F83;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -64,7 +64,7 @@
         color: white;
         height: 60px;
         &:hover {
-          color: #3a5aa5;
+          color: #015F83;
           background-color: #fff;
         }
         .icon {

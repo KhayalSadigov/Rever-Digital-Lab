@@ -2,16 +2,18 @@ import styles from "./index.module.scss"
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useFormik } from 'formik';
 import axios from "axios";
 import Base_Url from "../../Constant/base_url";
 import CircularProgress from '@mui/material/CircularProgress';
-import showSuccessMessage from "../../Services/alert";
 import Swal from "sweetalert2";
+import { DataContext } from "../../Context/dataContext";
 
 
 function LoginPage() {
+  const store = useContext(DataContext)
+
   useEffect(() => {
     axios.post(Base_Url + "/login/admin/check", { token: localStorage.getItem("reverToken") }).then(() => {
       window.location.replace('dashboard')
@@ -22,6 +24,9 @@ function LoginPage() {
   const [icon, setIcon] = useState(false)
   const [loader, setLoader] = useState(false)
   const [errorMes, setError] = useState("")
+
+  store.lockScreen.setData(false)
+
   const formik = useFormik({
     initialValues: {
       username: '',
@@ -34,8 +39,8 @@ function LoginPage() {
         localStorage.setItem('reverId', res.data.id)
         formik.resetForm()
         setLoader(false)
+        store.lockScreen.setData(false)
         setError("")
-        showSuccessMessage()
         Swal.fire({
           position: "center",
           icon: "success",
@@ -47,7 +52,8 @@ function LoginPage() {
             window.location.replace('dashboard')
           })
         });
-      }).catch(() => {
+      }).catch((e) => {
+        console.log(e)
         setError("Username or password are wrong")
         Swal.fire({
           title: "Login failed!",
@@ -60,6 +66,7 @@ function LoginPage() {
       })
     },
   });
+
   return (
     <section className={styles.login}>
       <div className={styles.left}>
@@ -71,7 +78,7 @@ function LoginPage() {
             <TextField required name="username" onChange={formik.handleChange} value={formik.values.username} className={styles.loginInput} label="Username" variant="outlined" />
           </div>
           <div className={styles.input}>
-            
+
             <TextField required name="password" onChange={formik.handleChange} value={formik.values.password} className={styles.loginInput} label="Password" type={icon ? "" : "password"} variant="outlined" />
             <RemoveRedEyeIcon onClick={() => {
               setIcon(!icon)

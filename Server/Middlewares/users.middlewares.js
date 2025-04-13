@@ -16,7 +16,6 @@ const userMiddlewares = {
             if (error) {
                 return res.status(400).json({ message: error.details });
             }
-
             next(); // Her şey başarılı, bir sonraki middleware'e geç
         } catch {
             return res.status(403).json({ error: "Invalid token" });

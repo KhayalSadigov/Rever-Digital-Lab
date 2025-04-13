@@ -1,0 +1,44 @@
+.head {
+    width: 100%;
+    height: 60px;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px;
+    border-radius: 5px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    h3 {
+      color: rgb(61, 61, 61);
+      color: #015f83;
+    }
+    .addBtn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #015f83;
+    }
+    .search {
+      width: 35%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      input {
+        padding: 5px 10px;
+        height: 40px;
+        width: 100%;
+        border-radius: 5px;
+        outline: none;
+        border: 2px solid #015f83;
+        transition: 0.2s;
+        &::placeholder{
+          // color: #015f83;
+        }
+      }
+      .icon {
+        right: 15px;
+        position: absolute;
+        color: #015f83;
+      }
+    }
+  }

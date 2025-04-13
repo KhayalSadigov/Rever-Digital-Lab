@@ -2,14 +2,13 @@ import { Outlet } from "react-router-dom";
 import SideBar from "../Layout/SideBar";
 import Header from "../Layout/Header";
 import ProfileBar from "../Layout/ProfileBar";
-import AddService from "../Layout/AddService";
+import LockScreen from "../Layout/LockScreen";
 
 
 function MainRout() {
-
   return (
     <>
-      <AddService />
+      <LockScreen />
       <ProfileBar />
       <div style={{ display: 'flex', width: '100vw' }}>
         <SideBar />

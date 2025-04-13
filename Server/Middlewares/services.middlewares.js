@@ -13,8 +13,9 @@ const servicesMiddleware = {
       req.user = jwt.verify(token, process.env.SECRET_KEY);
 
       const { error } = servicesValidation.validate(req.body);
-      if (error) return res.status(400).json({ message: error.details });
-
+      // console.log(req.body)
+      if (error) return res.status(400).json({ message: error });
+      console.log(error)
       next();
     } catch {
       return res.status(403).json({ error: "Invalid token" });

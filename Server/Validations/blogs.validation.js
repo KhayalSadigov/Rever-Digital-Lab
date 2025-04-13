@@ -6,7 +6,9 @@ const blogsValidation = Joi.object({
   createDate: Joi.string().required(),
   likes: Joi.number().required(),
   categoryId: Joi.number(),
-  cover : Joi.string()
+  cover: Joi.string(),
+  owner: Joi.string(),
+  ownerId: Joi.number(),
 });
 
 module.exports = blogsValidation;

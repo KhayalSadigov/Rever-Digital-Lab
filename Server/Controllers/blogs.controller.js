@@ -37,11 +37,13 @@ const blogsController = {
   },
 
   post: async (req, res) => {
-    const { title, content, createDate, likes, categoryId , cover } = req.body;
-    const values = [title, content, createDate, likes, categoryId ,cover];
+    const { title, content, createDate, likes, categoryId, cover, owner, ownerId } = req.body;
+    const values = [title, content, createDate, likes, categoryId, cover, owner, ownerId];
 
-    const query =
-      "INSERT INTO blogs (title, content, createDate, likes, categoryId , cover) VALUES (?, ?, ?, ?, ? , ?)";
+    const query = `
+      INSERT INTO blogs (title, content, createDate, likes, categoryId, cover, owner, ownerId)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    `;
 
     db.query(query, values, (err, results) => {
       if (err) {
@@ -73,9 +75,9 @@ const blogsController = {
 
   patch: async (req, res) => {
     const id = req.params.id;
-    const { title, content, createDate, likes, categoryId , cover } = req.body;
+    const { title, content, createDate, likes, categoryId, cover, owner, ownerId } = req.body;
 
-    if (!title && !content && !createDate && !likes && !categoryId)
+    if (!title && !content && !createDate && !likes && !categoryId && !cover && !owner && !ownerId)
       return res.status(400).send("At least one field is required");
 
     const updates = [];
@@ -104,6 +106,14 @@ const blogsController = {
     if (cover) {
       updates.push("cover = ?");
       values.push(cover);
+    }
+    if (owner) {
+      updates.push("owner = ?");
+      values.push(owner);
+    }
+    if (ownerId) {
+      updates.push("ownerId = ?");
+      values.push(ownerId);
     }
 
     values.push(id);

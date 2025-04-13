@@ -6,20 +6,95 @@
   z-index: 2;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
-.nav{
+.nav {
   transition: 0.2s;
   position: fixed;
   right: 0;
-  top:0;
+  top: 0;
   width: 300px;
   height: 100vh;
   background-color: #fff;
   z-index: 3;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
   padding: 15px;
-  .close{
-    width: 70%;
-    height: 30px;
+  .user {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    .data {
+      .photo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+        border-radius: 5px;
+        margin-bottom: 5px;
+        .gradient {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.322);
+        }
+      }
+      .text {
+        display: flex;
+        padding: 5px 0;
+        gap: 10px;
+        align-items: center;
+        justify-content: space-between;
+        .name {
+          font-size: 20px;
+        }
+        .role {
+          height: 100%;
+          padding: 5px 10px;
+          background-color: #1976d29a;
+          color: white;
+          font-size: 12px;
+          border-radius: 5px;
+        }
+      }
+    }
+    .btns {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      .editBtn,
+      .lockBtn,
+      .logBtn {
+        width: 100%;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        text-wrap: nowrap;
+        font-size: 12px;
+      }
+      .outBtns {
+        display: flex;
+        gap: 5px;
+      }
+    }
+  }
+  .footer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    .close {
+      width: 100%;
+      height: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-wrap: nowrap;
+    }
   }
 }

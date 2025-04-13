@@ -11,14 +11,15 @@ function PortfolioPage() {
   useEffect(() => {
     store.location.setData(location.pathname)
     axios.post(Base_Url + "/login/admin/check", { token: localStorage.getItem("reverToken") }).then(() => {
+      if (!store.user.data) {
+        axios.get(Base_Url + `/api/users/${localStorage.getItem('reverId')}`).then((res) => {
+          store.user.setData(res.data)
+        })
+      }
     }).catch(() => {
       window.location.replace('/')
     })
-    if (store.user.data) {
-      axios.get(Base_Url + `/api/users/${localStorage.getItem('reverId')}`).then((res) => {
-        store.user.setData(res.data)
-      })
-    }
+
   }, [])
   return (
     <div>PortfolioPage</div>

@@ -20,6 +20,22 @@ function SideBar() {
 
     const location = useLocation();
     const store = useContext(DataContext)
+
+    let handleLogOut = () => {
+        Swal.fire({
+            title: "Are you sure?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#015F83",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes!",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                localStorage.removeItem("reverToken")
+                window.location.reload()
+            }
+        });
+    }
     return (
         <div style={location.pathname == '/' ? { display: 'none' } : {}} className={styles.sideBar}>
             <div className={styles.content} style={store.sidebar.data ? {} : { width: "60px" }}>
@@ -29,7 +45,6 @@ function SideBar() {
                             store.sidebar.setData(!store.sidebar.data)
                         }} className={styles.toggleIcon} />
                         <span className={styles.toggleText} >
-                            RDL | Admin
                         </span>
                     </div>
                     <Tooltip title="Dashboard" placement="right">
@@ -37,7 +52,7 @@ function SideBar() {
                             navigate('/dashboard')
                             store.sidebar.setData(false)
 
-                        }} style={store.location.data == "/dashboard" ? { backgroundColor: "white", color: "#3a5aa5" } : {}}>
+                        }} style={store.location.data == "/dashboard" ? { backgroundColor: "white", color: "#015F83" } : {}}>
                             <DashboardIcon fontSize="large" className={styles.icon} />
                             <span className={styles.text} >
                                 Dashboard
@@ -50,7 +65,7 @@ function SideBar() {
                             navigate('/services')
                             store.sidebar.setData(false)
 
-                        }} style={store.location.data == "/services" ? { backgroundColor: "white", color: "#3a5aa5" } : {}}>
+                        }} style={store.location.data == "/services" ? { backgroundColor: "white", color: "#015F83" } : {}}>
                             <SettingsSuggestIcon fontSize="large" className={styles.icon} />
                             <span className={styles.text}>
                                 Services
@@ -62,7 +77,7 @@ function SideBar() {
                             navigate('/blogs')
                             store.sidebar.setData(false)
 
-                        }} style={store.location.data == "/blogs" ? { backgroundColor: "white", color: "#3a5aa5" } : {}}>
+                        }} style={store.location.data == "/blogs" ? { backgroundColor: "white", color: "#015F83" } : {}}>
                             <BookIcon fontSize="large" className={styles.icon} />
                             <span className={styles.text} >
                                 Blogs
@@ -74,7 +89,7 @@ function SideBar() {
                             navigate('/categories')
                             store.sidebar.setData(false)
 
-                        }} style={store.location.data == "/categories" ? { backgroundColor: "white", color: "#3a5aa5" } : {}}>
+                        }} style={store.location.data == "/categories" ? { backgroundColor: "white", color: "#015F83" } : {}}>
                             <CategoryIcon fontSize="large" className={styles.icon} />
                             <span className={styles.text} >
                                 Categories
@@ -86,7 +101,7 @@ function SideBar() {
                             navigate('/portfolio')
                             store.sidebar.setData(false)
 
-                        }} style={store.location.data == "/portfolio" ? { backgroundColor: "white", color: "#3a5aa5" } : {}}>
+                        }} style={store.location.data == "/portfolio" ? { backgroundColor: "white", color: "#015F83" } : {}}>
                             <WebStoriesIcon fontSize="large" className={styles.icon} />
                             <span className={styles.text} >
                                 Portfolio
@@ -98,7 +113,7 @@ function SideBar() {
                             navigate('/users')
                             store.sidebar.setData(false)
 
-                        }} style={store.location.data == "/users" ? { backgroundColor: "white", color: "#3a5aa5" } : {}}>
+                        }} style={store.location.data == "/users" ? { backgroundColor: "white", color: "#015F83" } : {}}>
                             <GroupIcon fontSize="large" className={styles.icon} />
                             <span className={styles.text} >
                                 Users
@@ -110,7 +125,7 @@ function SideBar() {
                             navigate('/messages')
                             store.sidebar.setData(false)
 
-                        }} style={store.location.data == "/messages" ? { backgroundColor: "white", color: "#3a5aa5" } : {}}>
+                        }} style={store.location.data == "/messages" ? { backgroundColor: "white", color: "#015F83" } : {}}>
                             <MessageIcon fontSize="large" className={styles.icon} />
                             <span className={styles.text} >
                                 Messages
@@ -119,21 +134,7 @@ function SideBar() {
                     </Tooltip>
                 </div>
                 <Tooltip title="Log out" placement="top">
-                    <div className={styles.logOut} onClick={() => {
-                        Swal.fire({
-                            title: "Are you sure?",
-                            icon: "warning",
-                            showCancelButton: true,
-                            confirmButtonColor: "#3085d6",
-                            cancelButtonColor: "#d33",
-                            confirmButtonText: "Yes!"
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                localStorage.removeItem("reverToken")
-                                window.location.reload()
-                            }
-                        });
-                    }}>
+                    <div className={styles.logOut} onClick={handleLogOut}>
                         <LogoutIcon fontSize="large" className={styles.icon} />
                         <span className={styles.text}>
                             Log out

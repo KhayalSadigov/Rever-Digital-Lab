@@ -5,6 +5,8 @@ const portfolioValidation = Joi.object({
   src: Joi.string().required(),
   cover: Joi.string().required(),
   description: Joi.string().required(),
+  owner: Joi.string(),
+  ownerId: Joi.number(),
 });
 
 module.exports = portfolioValidation;

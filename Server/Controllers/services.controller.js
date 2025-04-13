@@ -19,33 +19,59 @@ const servicesController = {
   },
 
   post: (req, res) => {
-    const { title, description, cover } = req.body;
+    const { title, description, cover, owner, ownerId } = req.body;
     db.query(
-      "INSERT INTO services (title, description, cover) VALUES (?, ?, ?)",
-      [title, description, cover],
+      "INSERT INTO services (title, description, cover, owner, ownerId) VALUES (?, ?, ?, ?, ?)",
+      [title, description, cover, owner, ownerId],
       (err, result) => {
         if (err) return res.status(500).json({ error: err.message });
-        res
-          .status(201)
-          .json({
-            message: "Service created successfully",
-            id: result.insertId,
-          });
+        res.status(201).json({
+          message: "Service created successfully",
+          id: result.insertId,
+        });
       }
     );
   },
 
   patch: (req, res) => {
     const { id } = req.params;
-    const { title, description, cover } = req.body;
-    db.query(
-      "UPDATE services SET title = ?, description = ?, cover = ? WHERE id = ?",
-      [title, description, cover, id],
-      (err) => {
-        if (err) return res.status(500).json({ error: err.message });
-        res.json({ message: "Service updated successfully" });
-      }
-    );
+    const { title, description, cover, owner, ownerId } = req.body;
+
+    const fields = [];
+    const values = [];
+
+    if (title) {
+      fields.push("title = ?");
+      values.push(title);
+    }
+    if (description) {
+      fields.push("description = ?");
+      values.push(description);
+    }
+    if (cover) {
+      fields.push("cover = ?");
+      values.push(cover);
+    }
+    if (owner) {
+      fields.push("owner = ?");
+      values.push(owner);
+    }
+    if (ownerId) {
+      fields.push("ownerId = ?");
+      values.push(ownerId);
+    }
+
+    if (fields.length === 0) {
+      return res.status(400).json({ error: "At least one field is required" });
+    }
+
+    values.push(id);
+    const query = `UPDATE services SET ${fields.join(", ")} WHERE id = ?`;
+
+    db.query(query, values, (err) => {
+      if (err) return res.status(500).json({ error: err.message });
+      res.json({ message: "Service updated successfully" });
+    });
   },
 
   delete: (req, res) => {

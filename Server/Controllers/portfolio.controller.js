@@ -1,7 +1,6 @@
 const db = require("../Config/db");
 
 const portfolioController = {
-  // Tüm portfolyoları getiren controller
   getAll: async (req, res) => {
     const query = `
       SELECT * FROM portfolio
@@ -15,7 +14,6 @@ const portfolioController = {
     });
   },
 
-  // Tek bir portfolyoyu getiren controller
   getOne: async (req, res) => {
     const id = req.params.id;
     const query = `
@@ -33,13 +31,14 @@ const portfolioController = {
     });
   },
 
-  // Yeni bir portfolyo ekleyen controller
   post: async (req, res) => {
-    const { title, description, cover, src } = req.body;
-    const values = [title, description, cover, src];
+    const { title, description, cover, src, owner, ownerId } = req.body;
+    const values = [title, description, cover, src, owner, ownerId];
 
-    const query =
-      "INSERT INTO portfolio (title, description, cover, src) VALUES (?, ?, ?, ?)";
+    const query = `
+      INSERT INTO portfolio (title, description, cover, src, owner, ownerId)
+      VALUES (?, ?, ?, ?, ?, ?)
+    `;
 
     db.query(query, values, (err, results) => {
       if (err) {
@@ -52,7 +51,6 @@ const portfolioController = {
     });
   },
 
-  // Portfolyoyu silen controller
   delete: async (req, res) => {
     const id = req.params.id;
     const query = "DELETE FROM portfolio WHERE id = ?";
@@ -70,12 +68,11 @@ const portfolioController = {
     });
   },
 
-  // Mevcut portfolyoyu güncelleyen controller
   patch: async (req, res) => {
     const id = req.params.id;
-    const { title, description, cover, src } = req.body;
+    const { title, description, cover, src, owner, ownerId } = req.body;
 
-    if (!title && !description && !cover && !src)
+    if (!title && !description && !cover && !src && !owner && !ownerId)
       return res.status(400).send("At least one field is required");
 
     const updates = [];
@@ -96,6 +93,14 @@ const portfolioController = {
     if (src) {
       updates.push("src = ?");
       values.push(src);
+    }
+    if (owner) {
+      updates.push("owner = ?");
+      values.push(owner);
+    }
+    if (ownerId) {
+      updates.push("ownerId = ?");
+      values.push(ownerId);
     }
 
     values.push(id);
