@@ -142,9 +142,10 @@ const usersController = {
         }
       );
 
-      res.status(200).send({ message: "Login successful", token , id : user.id });
+      res.status(200).send({ message: "Login successful", token, id: user.id });
     });
   },
+
   loginCheck: async (req, res) => {
     try {
       const { token } = req.body;
@@ -154,6 +155,45 @@ const usersController = {
     } catch (error) {
       res.status(400).send({ messsage: "invalid token" });
     }
+  },
+
+  getServices: async (req, res) => {
+    const ownerId = req.params.id;
+
+    const query = "SELECT * FROM services WHERE ownerId = ?";
+
+    db.query(query, [ownerId], (err, results) => {
+      if (err) return res.status(500).json({ error: err.message });
+
+      res.status(200).json(results);
+    });
+  },
+
+  getBlogs: (req, res) => {
+    const ownerId = req.params.id;
+
+    const query = `
+      SELECT blogs.*, categories.title AS categoryName 
+      FROM blogs 
+      LEFT JOIN categories ON blogs.categoryId = categories.id
+      WHERE blogs.ownerId = ?
+    `;
+
+    db.query(query, [ownerId], (err, results) => {
+      if (err) return res.status(500).json({ error: err.message });
+      res.status(200).json(results);
+    });
+  },
+
+  getPortfolio: (req, res) => {
+    const ownerId = req.params.id;
+
+    const query = `SELECT * FROM portfolio WHERE ownerId = ?`;
+
+    db.query(query, [ownerId], (err, results) => {
+      if (err) return res.status(500).json({ error: err.message });
+      res.status(200).json(results);
+    });
   },
 };
 

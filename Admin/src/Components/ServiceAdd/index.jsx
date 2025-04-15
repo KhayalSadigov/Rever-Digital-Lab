@@ -18,6 +18,7 @@ function AddService() {
   const [desc, setDesc] = useState(null)
   const [error, setError] = useState(null)
   const [loader, setLoader] = useState(false)
+
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0]
     const reader = new FileReader()
@@ -26,6 +27,7 @@ function AddService() {
       setBase64(reader.result)
     }
   }
+  
   function handleReset() {
     setBase64(null)
     setTitle(null)

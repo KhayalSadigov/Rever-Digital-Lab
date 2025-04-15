@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import styles from './index.module.scss'
 import { DataContext } from '../../Context/dataContext'
 import Button from '@mui/material/Button';
@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
 import LockIcon from '@mui/icons-material/Lock';
 import LogoutIcon from '@mui/icons-material/Logout';
-import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
+import ProfileCard from '../../Components/ProfileCards';
 
 function ProfileBar() {
 
@@ -28,14 +28,13 @@ function ProfileBar() {
         });
     }
 
-    const handleCloseProfile = () => {
-        store.profileBar.setData(!store.profileBar.data)
-    }
 
     const handleLockScreen = () => {
         store.lockScreen.setData(!store.lockScreen.data)
         store.profileBar.setData(!store.profileBar.data)
     }
+
+    const [shared, setShared] = useState(1) //1-Services 2-Blogs 3-Portfolio
 
     return (
         <>
@@ -44,16 +43,17 @@ function ProfileBar() {
             }}>
 
             </div>
-            <div style={store.profileBar.data ? {} : { right: '-300px' }} className={styles.nav}>
-
+            <div style={store.profileBar.data ? {} : { right: '-330px' }} className={styles.nav}>
                 <div className={styles.user}>
                     <div className={styles.data}>
                         <div className={styles.photo}>
                             <img src={store.user.data?.userProfile} alt="" />
-
                         </div>
                         <div className={styles.text}>
-                            <div className={styles.name}>{store.user.data?.username}</div>
+                            <div className={styles.userData}>
+                                <div className={styles.name}>{store.user.data?.username}</div>
+                                <div className={styles.email}>{store.user.data?.email}</div>
+                            </div>
                             <div className={styles.role}>{store.user.data?.userRole}</div>
                         </div>
                     </div>
@@ -65,8 +65,14 @@ function ProfileBar() {
                         </div>
                     </div>
                 </div>
-                <div className={styles.footer}>
-                    <Button className={styles.close} variant="contained" onClick={handleCloseProfile}><ArrowLeftIcon />Back</Button>
+                <div className={styles.hr}></div>
+                <div className={styles.shared}>
+                    <h1 className={styles.headBtns}>
+                        <div onClick={() => { setShared(1) }} style={shared == 1 ? { backgroundColor: "#015f83", color: "white" } : {}} className={styles.btn}>Services</div>
+                        <div onClick={() => { setShared(2) }} style={shared == 2 ? { backgroundColor: "#015f83", color: "white" } : {}} className={styles.btn}>Blogs</div>
+                        <div onClick={() => { setShared(3) }} style={shared == 3 ? { backgroundColor: "#015f83", color: "white" } : {}} className={styles.btn}>Portfolio</div>
+                    </h1>
+                    <ProfileCard id={store.user.data?.id} shared={shared} />
                 </div>
             </div>
         </>

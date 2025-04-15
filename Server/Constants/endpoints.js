@@ -2,6 +2,9 @@ const endpoints = {
   users: {
     getAll: "/api/users",
     getOne: "/api/users/:id",
+    getBlogs: "/api/users/:id/blogs",
+    getServices: "/api/users/:id/services",
+    getPortfolio: "/api/users/:id/portfolio",
     post: "/api/users",
     delete: "/api/users/:id",
     patch: "/api/users/:id",

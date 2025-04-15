@@ -6,6 +6,9 @@ const userMiddlewares = require("../Middlewares/users.middlewares");
 const usersRouter = express.Router();
 
 usersRouter.get(endpoints.users.getAll, usersController.getAll);
+usersRouter.get(endpoints.users.getBlogs, usersController.getBlogs);
+usersRouter.get(endpoints.users.getServices, usersController.getServices);
+usersRouter.get(endpoints.users.getPortfolio, usersController.getPortfolio);
 usersRouter.post(endpoints.users.login, usersController.login);
 usersRouter.post(endpoints.users.loginCheck, usersController.loginCheck);
 usersRouter.get(endpoints.users.getOne, usersController.getOne);
