@@ -54,7 +54,7 @@ export default function LockScreen() {
     }
 
 
-    return <div className={styles.Lock} style={store.lockScreen.data ? {} : { top: '-100%' }}>
+    return <div className={styles.Lock} style={store.lockScreen.data ? {} : { top: '-200%' }}>
         <div className={styles.glass}>
             <div></div>
         </div>

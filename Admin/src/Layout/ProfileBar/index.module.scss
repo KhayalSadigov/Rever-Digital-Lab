@@ -24,23 +24,19 @@
   .user {
     justify-content: center;
     width: 100%;
-    height: 130px;
     display: flex;
     flex-direction: column;
     .data {
-      display: flex;
       margin-bottom: 10px;
       align-items: center;
       .photo {
-        height: 50px;
-        width: 50px;
-        margin-right: 5px;
         display: flex;
         justify-content: center;
         align-items: center;
         position: relative;
         overflow: hidden;
-        border-radius: 50%;
+        border-radius: 5px;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px;
         img {
           width: 100%;
           height: 100%;
@@ -48,9 +44,9 @@
         }
       }
       .text {
-        width: calc(100% - 55px);
+        width: 100%;
         display: flex;
-        padding: 5px 0;
+        padding: 5px 3px;
         gap: 10px;
         align-items: center;
         justify-content: space-between;
@@ -102,48 +98,23 @@
     border: 1px solid rgb(221, 221, 221);
     margin: 15px 0;
   }
-  .shared {
-    // padding: 15px 0;
-    height: calc(100% - 170px);
+  .shareCount {
     width: 100%;
     display: flex;
-    flex-direction: column;
-    gap: 15px;
-    .headBtns {
-      width: 100%;
+    justify-content: space-between;
+    top: 0;
+    .btn {
+      width: 30%;
       display: flex;
-      justify-content: space-between;
-      top: 0;
-      .btn {
-        width: 30%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 5px 10px;
-        font-size: 14px;
-        background-color: #fff;
-        box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px;
-        border-radius: 5px;
-        font-weight: 500;
-        color: rgb(48, 48, 48);
-        cursor: pointer;
-      }
+      justify-content: center;
+      align-items: center;
+      padding: 5px 10px;
+      font-size: 14px;
+      background-color: #fff;
+      box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px;
+      border-radius: 5px;
+      font-weight: 500;
+      color: rgb(48, 48, 48);
     }
   }
-  // .footer {
-  //   width: 100%;
-  //   display: flex;
-  //   flex-direction: column;
-  //   align-items: center;
-  //   gap: 10px;
-  //   .close {
-  //     width: 100%;
-  //     height: 30px;
-  //     display: flex;
-  //     justify-content: center;
-  //     align-items: center;
-  //     text-wrap: nowrap;
-  //     background-color: #015f83;
-  //   }
-  // }
 }
