@@ -7,7 +7,6 @@ import axios from "axios";
 function MessagesPage() {
   const store = useContext(DataContext)
   const location = useLocation();
-  store.location.setData(location.pathname)
   useEffect(() => {
     store.location.setData(location.pathname)
     axios.post(Base_Url + "/login/admin/check", { token: localStorage.getItem("reverToken") }).then(() => {

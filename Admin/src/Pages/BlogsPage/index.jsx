@@ -6,10 +6,10 @@ import axios from "axios";
 import styles from "./index.module.scss";
 import BlogTable from "../../Components/BlogTable";
 import BlogHeader from "../../Components/BlogHeader";
+import AddBlog from "../../Components/BlogAdd";
 function BlogsPage() {
   const store = useContext(DataContext);
   const location = useLocation();
-  store.location.setData(location.pathname);
   useEffect(() => {
     store.location.setData(location.pathname);
     axios
@@ -31,6 +31,7 @@ function BlogsPage() {
   }, []);
   return (
     <div className={styles.blogTable}>
+      <AddBlog />
       <BlogHeader />
       <BlogTable />
     </div>

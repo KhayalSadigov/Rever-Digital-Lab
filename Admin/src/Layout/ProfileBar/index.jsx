@@ -6,7 +6,6 @@ import Swal from "sweetalert2";
 import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
 import LockIcon from "@mui/icons-material/Lock";
 import LogoutIcon from "@mui/icons-material/Logout";
-import ProfileCard from "../../Components/ProfileCards";
 import axios from "axios";
 import Base_Url from "../../Constant/base_url";
 

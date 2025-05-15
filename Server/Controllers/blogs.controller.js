@@ -39,12 +39,11 @@ const blogsController = {
   post: async (req, res) => {
     const { title, content, createDate, likes, categoryId, cover, owner, ownerId } = req.body;
     const values = [title, content, createDate, likes, categoryId, cover, owner, ownerId];
-
-    const query = `
+     const query = `
       INSERT INTO blogs (title, content, createDate, likes, categoryId, cover, owner, ownerId)
       VALUES (?, ?, ?, ?, ?, ?, ?, ?)
     `;
-
+    console.log("Yeni blog datasi:", req.body);
     db.query(query, values, (err, results) => {
       if (err) {
         return res.status(500).send({ error: err.message });

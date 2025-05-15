@@ -3,9 +3,11 @@ const blogsValidation = require("../Validations/blogs.validation");
 
 const blogMiddlewares = {
   post: async (req, res, next) => {
+    // console.log(req.body);
     try {
       const token = req.headers["authorization"]?.split(" ")[1];
       if (!token) {
+        console.log("no")
         return res
           .status(403)
           .json({ error: "Access Denied. No token provided." });

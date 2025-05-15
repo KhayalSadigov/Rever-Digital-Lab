@@ -5,7 +5,7 @@ const blogsValidation = Joi.object({
   content: Joi.string().required(),
   createDate: Joi.string().required(),
   likes: Joi.number().required(),
-  categoryId: Joi.number(),
+  categoryId: Joi.string(),
   cover: Joi.string(),
   owner: Joi.string(),
   ownerId: Joi.number(),

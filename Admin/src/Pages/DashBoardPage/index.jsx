@@ -13,7 +13,6 @@ function DashBoardPage() {
 
     const store = useContext(DataContext)
     const location = useLocation();
-    store.location.setData(location.pathname)
 
     useEffect(() => {
         store.location.setData(location.pathname)

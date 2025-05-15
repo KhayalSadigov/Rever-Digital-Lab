@@ -15,7 +15,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import Tooltip from "@mui/material/Tooltip";
 import { DataContext } from "../../Context/dataContext";
 import Swal from "sweetalert2";
-import EditService from "../ServiceEdit";
+import EditBlog from "../BlogEdit";
 
 export default function BlogTable() {
   const store = useContext(DataContext);
@@ -58,7 +58,7 @@ export default function BlogTable() {
   }
   return (
     <>
-      <EditService id={id} setId={setId} />
+      <EditBlog id={id} setId={setId} />
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
@@ -66,9 +66,6 @@ export default function BlogTable() {
               <TableCell align="center">id</TableCell>
               <TableCell align="center">Cover</TableCell>
               <TableCell align="center">Title</TableCell>
-              <TableCell sx={{ width: "300px" }} align="center">
-                Content
-              </TableCell>
               <TableCell align="center">Category</TableCell>
               <TableCell align="center">Owner</TableCell>
               <TableCell align="center">Action</TableCell>
@@ -86,9 +83,6 @@ export default function BlogTable() {
                     <img className={styles.img} src={row.cover} alt="" />
                   </TableCell>
                   <TableCell align="center">{row.title}</TableCell>
-                  <TableCell align="center">
-                    {row.content.slice(0, 150) + "..."}
-                  </TableCell>
                   <TableCell align="center">{row.categoryName}</TableCell>
                   <TableCell align="center">{row.owner}</TableCell>
                   <TableCell align="center">
