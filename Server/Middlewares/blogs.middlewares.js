@@ -28,6 +28,7 @@ const blogMiddlewares = {
   },
 
   patch: async (req, res, next) => {
+    console.log("Yes")
     try {
       const token = req.headers["authorization"]?.split(" ")[1];
       if (!token) {
@@ -41,6 +42,8 @@ const blogMiddlewares = {
 
       const { error } = blogsValidation.validate(req.body);
       if (error) {
+        console.log("Yes Validate")
+
         return res.status(400).json({ message: error.details });
       }
 

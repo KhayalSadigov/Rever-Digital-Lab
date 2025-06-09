@@ -3,16 +3,15 @@
   height: 100vw;
   position: fixed;
   top: 0;
+  z-index: 4;
   right: 0;
-  z-index: 3;
-  transform: translateX(-20px);
   background-color: rgba(0, 0, 0, 0.329);
 }
 .modal {
   position: fixed;
   z-index: 4;
   width: 40vw;
-  height: 90vh;
+  height: 98vh;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -32,7 +31,12 @@
   .image {
     display: flex;
     gap: 15px;
-    height: 25%;
+    width: 100%;
+    height: 30%;
+    img {
+      width: 100%;
+      height: 100%;
+    }
     .delImage {
       position: absolute;
       background-color: none;
@@ -88,6 +92,18 @@
       border: 1px solid #3a5aa5;
     }
   }
+  select {
+    padding: 15px 5px;
+    border-radius: 4px;
+    border: none;
+    border: 1px solid rgb(185, 184, 184);
+    outline: none;
+    color: grey;
+    font-size: 16px;
+    option{
+      color: black;
+    }
+  }
   textarea {
     height: 100%;
     padding: 15px;
@@ -103,6 +119,10 @@
     &::placeholder {
       font-size: 16px;
     }
+  }
+  .quill{
+    height: 50%;
+    margin-bottom: 30px;
   }
   .error {
     color: red;

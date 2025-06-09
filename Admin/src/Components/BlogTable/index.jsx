@@ -88,11 +88,11 @@ export default function BlogTable() {
                   <TableCell align="center">
                     <div className={styles.btns}>
                       <Tooltip
-                        title="Edit service"
+                        title="Edit Blog"
                         placement="top"
                         onClick={() => {
                           setId(row.id);
-                          store.serviceEdit.setData(true);
+                          store.blogEdit.setData(true);
                         }}
                       >
                         <Button variant="contained" className={styles.btn}>

@@ -123,7 +123,7 @@ const blogsController = {
       if (err) return res.status(500).send({ error: err.message });
 
       if (results.affectedRows === 0) {
-        return res.status(404).send({ message: "Blog not found" });
+        return res.status(406).send({ message: "Blog not found" });
       }
 
       return res.status(200).send({ message: "Blog updated successfully!" });

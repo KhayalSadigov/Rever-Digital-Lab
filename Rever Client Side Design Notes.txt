@@ -1,0 +1,12 @@
+Rever Client Side Design Notes
+
+
+DarkTema:
+Background Color / #080814
+Main Color / #292C39
+Second Color / #015F83
+
+LightTema:
+Background Color / #F3F3F9
+Main Color / #FFFFFF
+Second Color / #015F83

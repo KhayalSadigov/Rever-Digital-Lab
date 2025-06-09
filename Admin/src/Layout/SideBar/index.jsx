@@ -133,14 +133,6 @@ function SideBar() {
                         </div>
                     </Tooltip>
                 </div>
-                <Tooltip title="Log out" placement="top">
-                    <div className={styles.logOut} onClick={handleLogOut}>
-                        <LogoutIcon fontSize="large" className={styles.icon} />
-                        <span className={styles.text}>
-                            Log out
-                        </span>
-                    </div>
-                </Tooltip>
             </div>
         </div>
     )

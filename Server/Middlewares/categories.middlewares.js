@@ -14,7 +14,6 @@ const categoryMiddleware = {
 
       const { error } = categoriesValidation.validate(req.body);
       if (error) return res.status(400).json({ message: error.details });
-
       next();
     } catch {
       return res.status(403).json({ error: "Invalid token" });
@@ -32,7 +31,11 @@ const categoryMiddleware = {
       req.user = jwt.verify(token, process.env.SECRET_KEY);
 
       const { error } = categoriesValidation.validate(req.body);
-      if (error) return res.status(400).json({ message: error.details });
+      if (error) {
+        console.log("Yes validate")
+        return res.status(400).json({ message: error.details })
+      };
+      console.log(yes)
 
       next();
     } catch {
